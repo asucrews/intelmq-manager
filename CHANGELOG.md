@@ -1,5 +1,115 @@
+<!--
+SPDX-FileCopyrightText: 2020 IntelMQ Team
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
 CHANGELOG
 =========
+
+
+2.3.0 (unreleased)
+------------------
+
+### Backend
+- The backend has been rewritten and changed from PHP to Python (PR#197 by Bernhard Herzog and Bernhard Reiter, #80)
+- The backend has then been moved to a seperate repository and is now called `intelmq-api`: https://github.com/certtools/intelmq-api (PR#226)
+- The name `intelmq-manager` now refers to the web frontend only
+
+### intelmq-manager
+
+- The `intelmq-manager` html files are now being distributed as an archive of static files. They are still built using `mako`, but
+  this is done during the build of the source distribution.
+
+#### Landing page
+
+#### Configuration
+- Remove the hover function which displayed the hovered bot's configuration (#213, PR#216 by Birger Schacht).
+
+#### Management
+
+#### Monitor
+
+#### Check
+
+### Documentation
+- Add a link to the failure tips (PR#215 by Edvard Rejthar).
+- SQLite failure tip (PR#217 by Edvard Rejthar).
+
+### Third-party libraries
+
+### Packaging
+
+### Known issues
+
+
+2.2.1 (2020-07-30)
+------------------
+This IntelMQ Manager version requires IntelMQ >= 2.2.1.
+
+### Backend
+- Fix loading paths from `intelmqctl` executable (PR #205 by Einar Felipe Lanfranco).
+
+### Documentation
+- User Guide:
+  - Add section on configuration paths.
+  - Add section on named queues / paths.
+- Readme:
+  - Update screenshots (#201, PR#207 by Mladen Markovic).
+
+### Known issues
+* Graph jumps around on "Add edge" (#148).
+* wrong error message for new bots with existing ID (#152).
+* Monitor page: Automatic log refresh reset log page to first one (#190).
+
+2.2.0 (2020-06-23)
+------------------
+This IntelMQ Manager version requires IntelMQ >= 2.2.0.
+
+### Backend
+- `config`: Get file paths from `intelmctl debug --get-paths` if possible and fall back to hard-coded paths otherwise. Thereby environment variables influencing the paths are respected (#193).
+
+### Pages
+#### About
+- Show output of `intelmqctl debug`.
+
+### Documentation
+- Update release from intelmq's release documentation.
+- Update Installation documentation: Fix & update dependencies and supported operating systems.
+
+### Packaging
+- Update default `positions.conf` to the default runtime/pipeline configuration of intelmq >= 2.1.1.
+
+### Known issues
+* Missing CSRF protection (#111).
+* Graph jumps around on "Add edge" (#148).
+* wrong error message for new bots with existing ID (#152).
+* `ALLOWED_PATH=` violates CSP (#183).
+* Monitor page: Automatic log refresh reset log page to first one (#190).
+
+
+2.1.1 (2020-04-27)
+------------------
+Bernhard Herzog (Intevation) discovered that the backend incorrectly handled messages given by user-input in the "send" functionality of the Inspect-tool of the Monitor component. An attacker with access to the IntelMQ Manager could possibly use this issue to execute arbitrary code with the privileges of the webserver (CVE-2020-11016).
+
+### Backend
+- Fix misspelling of the environmental variable `INTELMQ_MANGER_CONTROLLER_CMD` to `INTELMQ_MANAGER_CONTROLLER_CMD` (an 'a' was missing).
+- Fix handling of POST variable `msg` of the message-sending functionality available in the Inspect-tool.
+
+### Pages
+#### Monitor
+- Fix running commands with the "inspect" widget by fixing the definition of the `CONTROLLER_CMD` in the template (PR #194).
+
+### Documentation
+- Update supported operating systems in Installation documentation (i.a. PR #191).
+
+### Known issues
+* Missing CSRF protection (#111).
+* Graph jumps around on "Add edge" (#148).
+* wrong error message for new bots with existing ID (#152).
+* `ALLOWED_PATH=` violates CSP (#183).
+* Monitor page: Automatic log refresh reset log page to first one (#190).
+
 
 2.1.0 (2019-10-15)
 ------------------
@@ -21,6 +131,7 @@ CHANGELOG
  
 #### Configuration
  - Node group Collector now may connect to Expert and Expert can connect to Parser, however you receive a warning that it is not very common.
+
 
 2.0.0 (2019-05-22)
 ------------------
@@ -56,7 +167,7 @@ CHANGELOG
 
 ### Known issues
 * Missing CSRF protection (#111).
-* Graph jumps around on "Add edge" bug component (#148).
+* Graph jumps around on "Add edge" (#148).
 * wrong error message for new bots with existing ID (#152).
 
 
@@ -111,7 +222,7 @@ CHANGELOG
 
 ### Known issues
 * Missing CSRF protection (#111).
-* Graph jumps around on "Add edge" bug component (#148).
+* Graph jumps around on "Add edge" (#148).
 * wrong error message for new bots with existing ID (#152).
 
 1.0.2 (2018-09-24)
@@ -139,7 +250,7 @@ CHANGELOG
 ### Known issues
 * Missing CSRF protection (#111).
 * Missing copyright notices (#140).
-* Graph jumps around on "Add edge" bug component (#148).
+* Graph jumps around on "Add edge" (#148).
 * wrong error message for new bots with existing ID (#152).
 * Queue size for deleted queue remains displayed (#158).
 
@@ -153,7 +264,7 @@ The version is compatible with intelmq >= 1.0.3
 ### Known issues
 * Missing CSRF protection (#111).
 * Missing copyright notices (#140).
-* Graph jumps around on "Add edge" bug component (#148).
+* Graph jumps around on "Add edge" (#148).
 * new runtime parameters with _ not possible (#153).
 * wrong error message for new bots with existing ID (#152).
 
@@ -195,7 +306,7 @@ The version is compatible with intelmq >= 1.0.3
 ### Known issues
 * Missing CSRF protection (#111).
 * Missing copyright notices (#140).
-* Graph jumps around on "Add edge" bug component (#148).
+* Graph jumps around on "Add edge" (#148).
 * new runtime parameters with _ not possible (#153).
 * wrong error message for new bots with existing ID (#152).
 
